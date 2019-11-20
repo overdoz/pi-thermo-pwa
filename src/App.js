@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+
+    const [text, setText] = useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <form method="POST" action="/">
+{/*
+            <input align={"top"} className={"textField"} name="text" type="text" value={text} placeholder="Hier könnte ihre Werbung stehen:" onChange={(e) => setText(e.target.value)} />
+*/}
+            <textarea wrap={"hard"} cols={"30"} className={"textField"} value={text} onChange={(e) => setText(e.target.value)} />
+            <input className={"inputButton"} type="submit" value="submit" />
+        </form>
     </div>
   );
 }
