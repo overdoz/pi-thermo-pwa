@@ -1,7 +1,8 @@
 .App {
   text-align: center;
   overflow: hidden;
-
+  background-color: #FBFBFB;
+  background-image: url('/assets/white-construction-paper-texture.jpg')
 }
 
 .App-logo {
@@ -30,14 +31,20 @@ form {
 textarea {
   width: 95vw;
   height: 90vh;
-  font-family: 'Slabo 27px', serif;
+  font-family: 'Roboto Mono', monospace;
   overflow: hidden;
   resize: vertical;
-  opacity: 0.8;
+  opacity: 0.95;
+  border: 0px solid white;
+  background-color: rgba(240, 240, 240, 0.0)
+}
+
+textarea:focus, input:focus{
+  outline: none;
 }
 
 .textField {
-  font-size: 6.3vw;
+  font-size: 5.5vw;
 
 }
 
