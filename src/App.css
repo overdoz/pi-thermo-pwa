@@ -1,24 +1,26 @@
 .App {
   text-align: center;
-  overflow: hidden;
   background-color: #FBFBFB;
-  background-image: url('/assets/white-construction-paper-texture.jpg')
+  scroll-snap-type: x mandatory;
+
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+
+.child {
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-align: start;
 }
+
+.pic-page {
+  position: relative;
+}
+
 
 form {
   width: 100vw;
@@ -26,6 +28,16 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 3;
+}
+
+img {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  opacity: 0.8;
 }
 
 textarea {
@@ -36,7 +48,8 @@ textarea {
   resize: vertical;
   opacity: 0.95;
   border: 0px solid white;
-  background-color: rgba(240, 240, 240, 0.0)
+  background-color: rgba(240, 240, 240, 0.0);
+  z-index: 4;
 }
 
 textarea:focus, input:focus{
@@ -44,7 +57,7 @@ textarea:focus, input:focus{
 }
 
 .textField {
-  font-size: 5.5vw;
+  font-size: 5.6vw;
 
 }
 
@@ -53,11 +66,32 @@ textarea:focus, input:focus{
   right: 3vh;
   bottom: 3vh;
   border-radius: 50%;
-  height: 15vw;
-  width: 15vw;
+  border: 2px solid black;
+  height: 20vw;
+  width: 20vw;
   z-index: 2;
+  font-size: 5vw;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: black;
+  font-family: 'Roboto Mono', monospace;
+    box-shadow: 2px 2px 2px black;
 }
 
-.App-link {
-  color: #09d3ac;
+section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.upload {
+  font-family: 'Roboto Mono', monospace;
+  border: 1px solid black;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1; /* Firefox */
+}
+
