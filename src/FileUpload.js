@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import axios from 'axios';
+import paper from './white-construction-paper-texture.jpg';
 
 class FileUpload extends Component {
     constructor(props) {
@@ -32,6 +33,8 @@ class FileUpload extends Component {
     render() {
         return (
             <section className={"child pic-page"}>
+                <img src={paper} alt={"papier"}/>
+                <h2>Print your uploaded photo</h2>
                 <form method="POST" action="http://localhost:8000/upload" encType='multipart/form-data'>
                     <input className={"upload"} type={"file"} accept={"image/*"} capture={"camera"} name={"file"} onChange={this.onChangeHandler} />
                     <input className={"inputButton"} type="submit" value="print" onClick={this.onClickHandler}/>

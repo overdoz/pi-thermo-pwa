@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   background-color: #FBFBFB;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: y mandatory;
 
 }
 
@@ -15,6 +15,11 @@ body {
   height: 100vh;
   width: 100vw;
   scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
 }
 
 .pic-page {
@@ -38,6 +43,14 @@ img {
   z-index: 1;
   left: 0;
   opacity: 0.8;
+  border-bottom: 5px dashed #c3c3c3
+}
+
+h2 {
+  font-family: Gabriele;
+  font-size: 400%;
+  position: absolute;
+  opacity: 0.5;
 }
 
 textarea {
@@ -73,7 +86,7 @@ textarea:focus, input:focus{
   font-size: 5vw;
   background-color: rgba(255, 255, 255, 0.2);
   color: black;
-  font-family: 'Roboto Mono', monospace;
+  font-family: Gabriele;
     box-shadow: 2px 2px 2px black;
 }
 
@@ -87,11 +100,38 @@ section {
 
 .upload {
   font-family: 'Roboto Mono', monospace;
-  border: 1px solid black;
+  padding: 2em;
+  border: 2px dashed black;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: black;
     opacity: 1; /* Firefox */
+}
+
+@font-face {
+  font-family: 'Gabriele';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./type1.ttf'); /* IE9 Compat Modes */
+  src: local('Gabriele'), local('Gabriele'),
+       url('./type1.ttf') format('embedded-opentype'), /* IE6-IE8 */
+       url('./type1.ttf') format('woff2'), /* Super Modern Browsers */
+       url('./type1.ttf') format('woff'), /* Modern Browsers */
+       url('./type1.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('./type1.ttf') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Silvery';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./type1.ttf'); /* IE9 Compat Modes */
+  src: local('Silvery'), local('Silvery'),
+       url('./type2.otf') format('embedded-opentype'), /* IE6-IE8 */
+       url('./type2.ttf') format('woff'), /* Modern Browsers */
+       url('./type2.ttf') format('woff2'), /* Super Modern Browsers */
+       url('./type2.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('./type2.ttf') format('svg'); /* Legacy iOS */
 }
 

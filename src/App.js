@@ -16,7 +16,7 @@ function App() {
         <section className={"child text-page"}>
             <img src={paper} alt={"papier"}/>
             <form method="POST" action="/">
-                <textarea name ={"text"} wrap={"hard"} cols={"30"} className={"textField"} value={text} onChange={(e) => setText(e.target.value)} placeholder={"  Lass uns eine Notiz da... \n\n" + w + "\n ┏(-_-)┛┗(-_-﻿ )┓┗(-_-)┛\n\n  be creative :) \n    or die tryin \n\n "} />
+                <textarea name ={"text"} wrap={"hard"} cols={"30"} className={"textField"} value={text} onChange={(e) => setText(e.target.value)} placeholder={"Leave us a note... \n\n" + w + "\n ┏(-_-)┛┗(-_-﻿ )┓┗(-_-)┛\n\n  be creative :) \n    or die tryin \n\n "} />
                 <input className={"inputButton"} type="submit" value="print" />
             </form>
         </section>
