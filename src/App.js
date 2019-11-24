@@ -1,28 +1,46 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import axios from 'axios';
 import paper from './white-construction-paper-texture.jpg';
-import FileUpload from "./FileUpload";
 
+class FileUpload extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedFile: null
+        }
 
-function App() {
-  const w = "             W \n            WWW\n            WWW\n           WWWWW\n     W     WWWWW     W\n     WWW   WWWWW   WWW\n      WWW  WWWWW  WWW\n       WWW  WWW  WWW\n        WWW WWW WWW\n          WWWWWWW\n       WWWW  |  WWWW\n             |\n             |\n"
+    }
 
-  const [text, setText] = useState("");
+    onChangeHandler=event=>{
+        this.setState({
+            selectedFile: event.target.files[0],
+            loaded: 0,
+        });
+    };
 
+    onClickHandler = () => {
+        const data = new FormData()
+        data.append('file', this.state.selectedFile)
+        axios.post("http://localhost:8000/upload", data, {
+            // receive two    parameter endpoint url ,form data
+        }).then(res => { // then print response status
+            console.log(res.statusText)
+        })
+    };
 
- 
-  return (
-    <div className="App container">
-        <section className={"child text-page"}>
-            <img src={paper} alt={"papier"}/>
-            <form method="POST" action="/">
-                <textarea name ={"text"} wrap={"hard"} cols={"30"} className={"textField"} value={text} onChange={(e) => setText(e.target.value)} placeholder={"Leave us a note... \n\n" + w + "\n ┏(-_-)┛┗(-_-﻿ )┓┗(-_-)┛\n\n  be creative :) \n    or die tryin \n\n "} />
-                <input className={"inputButton"} type="submit" value="print" />
-            </form>
-        </section>
-        <FileUpload />
-    </div>
-  );
+    render() {
+        return (
+            <section className={"child pic-page"}>
+                <img src={paper} alt={"papier"}/>
+                <h2>Print your uploaded photo</h2>
+                <form method="POST" action="http://localhost:8000/upload" encType='multipart/form-data'>
+                    <input className={"upload"} type={"file"} accept={"image/*"} capture={"camera"} name={"file"} onChange={this.onChangeHandler} />
+                    {/*<input className={"inputButton"} type="submit" value="print" onClick={this.onClickHandler}/>*/}
+                </form>
+            </section>
+        )
+    }
 }
 
-export default App;
+export default FileUpload
