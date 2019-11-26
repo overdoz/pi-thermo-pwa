@@ -10,7 +10,6 @@ body {
 }
 
 
-
 .child {
   height: 100vh;
   width: 100vw;
@@ -51,6 +50,7 @@ h2 {
   font-size: 400%;
   position: absolute;
   opacity: 0.5;
+  transform: translateY(-30vh);
 }
 
 textarea {
@@ -63,6 +63,7 @@ textarea {
   border: 0px solid white;
   background-color: rgba(240, 240, 240, 0.0);
   z-index: 4;
+  line-height: 110%;
 }
 
 textarea:focus, input:focus{
@@ -82,12 +83,17 @@ textarea:focus, input:focus{
   border: 2px solid black;
   height: 20vw;
   width: 20vw;
-  z-index: 2;
+  z-index: 10;
   font-size: 5vw;
   background-color: rgba(255, 255, 255, 0.2);
   color: black;
   font-family: Gabriele;
-    box-shadow: 2px 2px 2px black;
+  box-shadow: 2px 2px 2px black;
+}
+
+.inputButton:active {
+  box-shadow: 1px 1px 1px black;
+  transform: translateY(3px);
 }
 
 section {
@@ -104,34 +110,34 @@ section {
   border: 2px dashed black;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: black;
-    opacity: 1; /* Firefox */
+::placeholder {
+  color: black;
+  opacity: 1;
 }
 
 @font-face {
   font-family: 'Gabriele';
   font-style: normal;
   font-weight: 400;
-  src: url('./type1.ttf'); /* IE9 Compat Modes */
+  src: url('./type1.ttf');
   src: local('Gabriele'), local('Gabriele'),
-       url('./type1.ttf') format('embedded-opentype'), /* IE6-IE8 */
-       url('./type1.ttf') format('woff2'), /* Super Modern Browsers */
-       url('./type1.ttf') format('woff'), /* Modern Browsers */
-       url('./type1.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('./type1.ttf') format('svg'); /* Legacy iOS */
+  url('./type1.ttf') format('embedded-opentype'),
+  url('./type1.ttf') format('woff2'),
+  url('./type1.ttf') format('woff'),
+  url('./type1.ttf') format('truetype'),
+  url('./type1.ttf') format('svg');
 }
 
 @font-face {
   font-family: 'Silvery';
   font-style: normal;
   font-weight: 400;
-  src: url('./type1.ttf'); /* IE9 Compat Modes */
+  src: url('./type1.ttf');
   src: local('Silvery'), local('Silvery'),
-       url('./type2.otf') format('embedded-opentype'), /* IE6-IE8 */
-       url('./type2.ttf') format('woff'), /* Modern Browsers */
-       url('./type2.ttf') format('woff2'), /* Super Modern Browsers */
-       url('./type2.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('./type2.ttf') format('svg'); /* Legacy iOS */
+  url('./type2.otf') format('embedded-opentype'),
+  url('./type2.ttf') format('woff'),
+  url('./type2.ttf') format('woff2'),
+  url('./type2.ttf') format('truetype'),
+  url('./type2.ttf') format('svg');
 }
 
