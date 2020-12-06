@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import './App.css'
 import axios from 'axios';
-import paper from './white-construction-paper-texture.jpg';
 
 class App extends Component {
     constructor(props) {
@@ -10,7 +9,6 @@ class App extends Component {
             selectedFile: null,
             text: "",
             name: "Stranger",
-            nextName: "Annalena",
             names: ["Annalena", "Mary", "Sepp", "Thanh", "Stranger"]
         }
 
@@ -18,27 +16,16 @@ class App extends Component {
     }
 
     componentDidMount() {
+        document.getElementById("form__textarea").focus();
         this.animateName();
     }
 
     animateName = () => {
-        // let name = this.state.name;
-        // let count = 0;
-        // let concat = false;
-        // let nextNameLength = this.state.nextName.length;
-        // setInterval(() => {
-        //     if (this.state.name.length > 0 && !concat) {
-        //         this.setState({name: this.state.name.substr(0, this.state.name.length - 1)});
-        //         (this.state.name.length <= 0) ? concat = !concat : concat = true;
-        //     } else if (concat) {
-        //         name = this.state.nextName;
-        //         this.setState({name: this.state.nextName.substr(0, this.state.name.length - 1 - nextNameLength)});
-        //         nextNameLength--;
-        //         if (nextNameLength == 0) {
-        //             concat = !concat;
-        //         }
-        //     }
-        // }, 2000);
+        let count = 0;
+        setInterval(() => {
+            count = (count + 1) % this.state.names.length;
+            this.setState({name: this.state.names[count]})
+        }, 2000)
     };
 
 
@@ -94,40 +81,38 @@ class App extends Component {
     };
 
     render() {
-        const w = "             W \n            WWW\n            WWW\n           WWWWW\n     W     WWWWW     W\n     WWW   WWWWW   WWW\n      WWW  WWWWW  WWW\n       WWW  WWW  WWW\n        WWW WWW WWW\n          WWWWWWW\n       WWWW  |  WWWW\n             |\n             |\n"
-
         return (
-            <div className="App container">
+            <div className="app">
                 <h1>Hello <br/>{this.state.name}</h1>
-                <section className={"text-page"}>
-                    {/*<div className={"arrow-up"}/>*/}
-                    <div className={"child"}>
-                        {/*<img src={paper} alt={"papier"}/>*/}
+                <section>
+                    <div className={"page__shape"}>
                         <form method="POST" action="/">
-                            <textarea name={"text"} wrap={"hard"} cols={"29"} className={"textField textarea resize-ta"}
+                            <textarea name={"text"} wrap={"hard"} cols={"29"} className={"form__textarea"} id={"form__textarea"}
                                       value={this.state.text} onChange={(e) => this.setState({text: e.target.value})}
                                       placeholder={"Leave us a note..."}/>
                         </form>
-                        <div className={"date"}>
+                        <div className={"page__date"}>
                             <p>2020-04-20 16:20:23</p>
                         </div>
                     </div>
-                    <div className={"down"}>
+                    <div className={"footer__indicator"}>
                         <p>Photo Upload</p>
-                        <i className="gg-arrow-down arrow1"></i>
+                        <i className="page__arrow page__arrow--down"/>
                     </div>
                 </section>
-                <section className={"pic-page"}>
-                    <div className={"child"}>
-                        {/*<img src={paper} alt={"papier"}/>*/}
+                <section>
+                    <div className={"page__shape"}>
                         <h2>Print a photo</h2>
                         <form method="POST" action="" encType='multipart/form-data'>
-                            <input className={"upload"} uwfileinput type="file" accept={".jpeg,.jpg,.png,.gif"}
+                            <i className="page__arrow page__arrow--right"/>
+                            <label htmlFor="form__upload">Choose photo...</label>
+                            <input className={"form___upload"} uwfileinput type="file" accept={".jpeg,.jpg,.png,.gif"} id="form__upload"
                                    capture={"camera"} name={"file"} onChange={this.onChangeHandler}/>
+                            <i className="page__arrow page__arrow--left"/>
                         </form>
                     </div>
                 </section>
-                <input className={"inputButton"} type="submit" value="print" onClick={this.onClickHandler}/>
+                <input className={"footer__button"} type="submit" value="print" onClick={this.onClickHandler}/>
             </div>
         )
     }
