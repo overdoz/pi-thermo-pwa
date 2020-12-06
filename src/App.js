@@ -8,12 +8,38 @@ class App extends Component {
         super(props);
         this.state = {
             selectedFile: null,
-            text: ""
+            text: "",
+            name: "Stranger",
+            nextName: "Annalena",
+            names: ["Annalena", "Mary", "Sepp", "Thanh", "Stranger"]
         }
 
 
     }
 
+    componentDidMount() {
+        this.animateName();
+    }
+
+    animateName = () => {
+        // let name = this.state.name;
+        // let count = 0;
+        // let concat = false;
+        // let nextNameLength = this.state.nextName.length;
+        // setInterval(() => {
+        //     if (this.state.name.length > 0 && !concat) {
+        //         this.setState({name: this.state.name.substr(0, this.state.name.length - 1)});
+        //         (this.state.name.length <= 0) ? concat = !concat : concat = true;
+        //     } else if (concat) {
+        //         name = this.state.nextName;
+        //         this.setState({name: this.state.nextName.substr(0, this.state.name.length - 1 - nextNameLength)});
+        //         nextNameLength--;
+        //         if (nextNameLength == 0) {
+        //             concat = !concat;
+        //         }
+        //     }
+        // }, 2000);
+    };
 
 
     onChangeHandler = event => {
@@ -72,7 +98,7 @@ class App extends Component {
 
         return (
             <div className="App container">
-                <h1>Hello <br/>Stranger</h1>
+                <h1>Hello <br/>{this.state.name}</h1>
                 <section className={"text-page"}>
                     {/*<div className={"arrow-up"}/>*/}
                     <div className={"child"}>

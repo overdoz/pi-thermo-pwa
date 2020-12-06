@@ -110,6 +110,7 @@ h2 {
 
 p {
   margin: 0;
+  font-size: 5.2vw;
 }
 
 textarea {
@@ -122,8 +123,9 @@ textarea {
   border: 0px solid white;
   background-color: rgba(240, 240, 240, 0.0);
   z-index: 4;
-  line-height: 2.7vh;
+  line-height: 5.4vw;
   overflow-y: scroll;
+  margin-top: 5vw;
 }
 
 textarea:focus, input:focus{
