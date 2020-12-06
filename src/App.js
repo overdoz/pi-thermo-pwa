@@ -11,8 +11,6 @@ class App extends Component {
             name: "Stranger",
             names: ["Annalena", "Mary", "Sepp", "Thanh", "Stranger"]
         }
-
-
     }
 
     componentDidMount() {

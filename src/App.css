@@ -179,8 +179,6 @@ form {
 
 .form__textarea {
   display: block;
-  height: 100%;
-  width: 100%;
   overflow: hidden;
   resize: both;
   min-height: 40px;
