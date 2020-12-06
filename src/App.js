@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import './App.css'
 import axios from 'axios';
 import paper from './white-construction-paper-texture.jpg';
@@ -11,10 +11,12 @@ class App extends Component {
             text: ""
         }
 
+
     }
 
 
-    onChangeHandler=event=>{
+
+    onChangeHandler = event => {
         this.setState({
             selectedFile: event.target.files[0]
 
@@ -40,7 +42,7 @@ class App extends Component {
             }).then(res => { // then print response status
                 console.log(res.statusText)
             });
-            console.log((this.state.text))
+            console.log((this.state.text));
             this.setState({text: ""});
         } else if (this.state.text === "" && this.state.selectedFile !== null) {
             console.log("sent pic");
@@ -70,20 +72,36 @@ class App extends Component {
 
         return (
             <div className="App container">
-                <section className={"child text-page"}>
-                    <img src={paper} alt={"papier"}/>
-                    <form method="POST" action="/">
-                        <textarea name={"text"} wrap={"hard"} cols={"29"} className={"textField"} value={this.state.text} onChange={(e) => this.setState({text: e.target.value})} placeholder={"Leave us a note... \n\n" + w + "\n ┏(-_-)┛┗(-_-﻿ )┓┗(-_-)┛\n\n  be creative :) \n    or die tryin \n\n "} />
-                    </form>
+                <h1>Hello <br/>Stranger</h1>
+                <section className={"text-page"}>
+                    {/*<div className={"arrow-up"}/>*/}
+                    <div className={"child"}>
+                        {/*<img src={paper} alt={"papier"}/>*/}
+                        <form method="POST" action="/">
+                            <textarea name={"text"} wrap={"hard"} cols={"29"} className={"textField textarea resize-ta"}
+                                      value={this.state.text} onChange={(e) => this.setState({text: e.target.value})}
+                                      placeholder={"Leave us a note..."}/>
+                        </form>
+                        <div className={"date"}>
+                            <p>2020-04-20 16:20:23</p>
+                        </div>
+                    </div>
+                    <div className={"down"}>
+                        <p>Photo Upload</p>
+                        <i className="gg-arrow-down arrow1"></i>
+                    </div>
                 </section>
-                <section className={"child pic-page"}>
-                    <img src={paper} alt={"papier"}/>
-                    <h2>Print your uploaded photo</h2>
-                    <form method="POST" action="" encType='multipart/form-data'>
-                        <input className={"upload"} uwfileinput type="file" accept={".jpeg,.jpg,.png,.gif"} capture={"camera"} name={"file"} onChange={this.onChangeHandler} />
-                    </form>
+                <section className={"pic-page"}>
+                    <div className={"child"}>
+                        {/*<img src={paper} alt={"papier"}/>*/}
+                        <h2>Print a photo</h2>
+                        <form method="POST" action="" encType='multipart/form-data'>
+                            <input className={"upload"} uwfileinput type="file" accept={".jpeg,.jpg,.png,.gif"}
+                                   capture={"camera"} name={"file"} onChange={this.onChangeHandler}/>
+                        </form>
+                    </div>
                 </section>
-                <input className={"inputButton"} type="submit" value="print" onClick={this.onClickHandler} />
+                <input className={"inputButton"} type="submit" value="print" onClick={this.onClickHandler}/>
             </div>
         )
     }

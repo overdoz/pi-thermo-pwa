@@ -1,8 +1,9 @@
 .App {
   text-align: center;
-  background-color: #FBFBFB;
   scroll-snap-type: y mandatory;
-
+  width: 100vw;
+  height: 100vh;
+  background-color: #F2BDC7;
 }
 
 body {
@@ -11,14 +12,55 @@ body {
 
 
 .child {
-  height: 100vh;
-  width: 100vw;
+  width: 90%;
+  height: 60%;
+  padding: 5vw 2vw 2vw 2vw;
   scroll-snap-align: start;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   flex-direction: column;
+  background-color: white;
+  border-top: 1px dashed #F2BDC7;
+  border-bottom: 1px dashed #F2BDC7;
+}
+
+.date {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.down {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 5vw;
+  color: #075A20;
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+}
+
+.arrow1 {
+  animation: slide1 1s ease-in-out infinite;
+  margin-left: 9px;
+}
+
+@keyframes slide1 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(0, 10px);
+  }
+}
+
+i {
+  color: #075A20;
 }
 
 .pic-page {
@@ -27,8 +69,8 @@ body {
 
 
 form {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,8 +78,8 @@ form {
 }
 
 img {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: absolute;
   z-index: 1;
   left: 0;
@@ -45,17 +87,34 @@ img {
   border-bottom: 5px dashed #c3c3c3
 }
 
+h1 {
+  position: fixed;
+  z-index: 5;
+  text-shadow: -0.05em 0 0 #F22613, 0.05em 0 0 #00FFFF;
+  font-family: "Helvetica Neue", sans-serif;
+  margin: 5vw;
+  letter-spacing: 0.09em;
+  text-align: left;
+  line-height: 90%;
+  color: #3258A6;
+}
+
 h2 {
   font-family: Gabriele;
-  font-size: 400%;
   position: absolute;
   opacity: 0.5;
-  transform: translateY(-30vh);
+  position: absolute;
+  top: 0;
+  color: #3258A6;
+}
+
+p {
+  margin: 0;
 }
 
 textarea {
-  width: 95vw;
-  height: 90vh;
+  width: 100%;
+  height: 100%;
   font-family: 'Roboto Mono', monospace;
   overflow: hidden;
   resize: vertical;
@@ -63,31 +122,53 @@ textarea {
   border: 0px solid white;
   background-color: rgba(240, 240, 240, 0.0);
   z-index: 4;
-  line-height: 110%;
+  line-height: 2.7vh;
+  overflow-y: scroll;
 }
 
 textarea:focus, input:focus{
   outline: none;
 }
 
-.textField {
-  font-size: 5.6vw;
+section {
+  background-color: #F2BDC7;
 
 }
 
+.textField {
+  font-size: 5.2vw;
+
+}
+
+.textarea {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  min-height: 40px;
+}
+
+.textarea[contenteditable]:empty::before {
+  content: "Placeholder still possible";
+  color: gray;
+}
+
+
 .inputButton {
-  position: absolute;
+  position: fixed;
+  font-weight: bold;
   right: 3vh;
   bottom: 3vh;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 2px solid #3258A6;
   height: 20vw;
   width: 20vw;
   z-index: 10;
-  font-size: 5vw;
-  background-color: rgba(255, 255, 255, 0.2);
-  color: black;
-  font-family: Gabriele;
+  font-size: 4.5vw;
+  letter-spacing: 0.09em;
+  background-color: #F2E205;
+  color: #3258A6;
   box-shadow: 2px 2px 2px black;
 }
 
@@ -100,6 +181,7 @@ section {
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -107,12 +189,11 @@ section {
 .upload {
   font-family: 'Roboto Mono', monospace;
   padding: 2em;
-  border: 2px dashed black;
 }
 
 ::placeholder {
   color: black;
-  opacity: 1;
+  opacity: 0.5;
 }
 
 @font-face {
@@ -141,3 +222,33 @@ section {
   url('./type2.ttf') format('svg');
 }
 
+.gg-arrow-down {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs,1));
+  width: 22px;
+  height: 22px
+}
+.gg-arrow-down::after,
+.gg-arrow-down::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 4px
+}
+.gg-arrow-down::after {
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  transform: rotate(-45deg);
+  left: 7px
+}
+.gg-arrow-down::before {
+  width: 2px;
+  height: 16px;
+  left: 10px;
+  background: currentColor
+}
