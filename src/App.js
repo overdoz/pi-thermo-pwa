@@ -106,7 +106,7 @@ class App extends Component {
                 </section>
                 <section>
                     <div className={"page__shape"}>
-                        {this.state.objectURL ? <img className={"page__photo"} src={this.state.objectURL}/> : null}
+                        {this.state.objectURL ? <img alt={"photo"} className={"page__photo"} src={this.state.objectURL}/> : null}
                         <form method="POST" action="" encType='multipart/form-data'>
                             <i className="page__arrow page__arrow--right"/>
                             <label htmlFor="form__upload">{this.state.objectURL ? "Change" : "Choose"} photo...</label>

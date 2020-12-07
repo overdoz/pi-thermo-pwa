@@ -126,12 +126,13 @@ form {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .page__photo {
   width: 80%;
   height: auto;
+  filter: grayscale(100%) brightness(0.5) contrast(200%);
 }
 
 .page__arrow {
