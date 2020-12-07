@@ -110,7 +110,6 @@ form {
 
 .page__shape {
   width: 90%;
-  height: 60%;
   padding: 5vw 2vw 2vw 2vw;
   scroll-snap-align: start;
   display: flex;
@@ -127,6 +126,12 @@ form {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.page__photo {
+  width: 80%;
+  height: auto;
 }
 
 .page__arrow {

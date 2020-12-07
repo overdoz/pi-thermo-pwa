@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import './App.css'
 import axios from 'axios';
+import Textarea from 'react-expanding-textarea'
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             selectedFile: null,
+            objectURL: "",
             text: "",
             name: "Stranger",
             names: ["Annalena", "Mary", "Sepp", "Thanh", "Stranger"]
@@ -29,8 +31,8 @@ class App extends Component {
 
     onChangeHandler = event => {
         this.setState({
-            selectedFile: event.target.files[0]
-
+            selectedFile: event.target.files[0],
+            objectURL: URL.createObjectURL(event.target.files[0])
         });
     };
 
@@ -79,16 +81,20 @@ class App extends Component {
     };
 
     render() {
+
         return (
             <div className="app">
                 <h1>Hello <br/>{this.state.name}</h1>
                 <section>
                     <div className={"page__shape"}>
-                        <form method="POST" action="/">
-                            <textarea name={"text"} wrap={"hard"} cols={"29"} className={"form__textarea"} id={"form__textarea"}
-                                      value={this.state.text} onChange={(e) => this.setState({text: e.target.value})}
-                                      placeholder={"Leave us a note..."}/>
-                        </form>
+                        <Textarea
+                            className="form__textarea"
+                            id="form__textarea"
+                            maxLength="3000"
+                            name="pet[notes]"
+                            onChange={(e) => this.setState({text: e.target.value})}
+                            placeholder="Leave us a note..."
+                            />
                         <div className={"page__date"}>
                             <p>2020-04-20 16:20:23</p>
                         </div>
@@ -100,10 +106,10 @@ class App extends Component {
                 </section>
                 <section>
                     <div className={"page__shape"}>
-                        <h2>Print a photo</h2>
+                        {this.state.objectURL ? <img className={"page__photo"} src={this.state.objectURL}/> : null}
                         <form method="POST" action="" encType='multipart/form-data'>
                             <i className="page__arrow page__arrow--right"/>
-                            <label htmlFor="form__upload">Choose photo...</label>
+                            <label htmlFor="form__upload">{this.state.objectURL ? "Change" : "Choose"} photo...</label>
                             <input className={"form___upload"} uwfileinput type="file" accept={".jpeg,.jpg,.png,.gif"} id="form__upload"
                                    capture={"camera"} name={"file"} onChange={this.onChangeHandler}/>
                             <i className="page__arrow page__arrow--left"/>
