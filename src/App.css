@@ -139,7 +139,7 @@ form {
 .page__photo {
   width: 90%;
   height: auto;
-  filter: grayscale(100%) brightness(0.5) contrast(200%);
+  filter: grayscale(100%) brightness(0.8) contrast(200%);
 }
 
 .page__arrow {
