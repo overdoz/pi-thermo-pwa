@@ -95,7 +95,7 @@ form {
 }
 
 
-.app {
+#app {
   text-align: center;
   scroll-snap-type: y mandatory;
   background-color: #F2BDC7;
@@ -109,7 +109,6 @@ form {
 }
 
 .page__shape {
-  width: 90%;
   padding: 5vw 2vw 2vw 2vw;
   scroll-snap-align: start;
   display: flex;
@@ -122,6 +121,14 @@ form {
   border-bottom: 1px dashed #F2BDC7;
 }
 
+.page__shape--text {
+  width: 90%;
+}
+
+.page__shape--photo {
+  width: 80%;
+}
+
 .page__date {
   width: 100%;
   display: flex;
@@ -130,7 +137,7 @@ form {
 }
 
 .page__photo {
-  width: 80%;
+  width: 90%;
   height: auto;
   filter: grayscale(100%) brightness(0.5) contrast(200%);
 }

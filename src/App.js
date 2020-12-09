@@ -11,12 +11,18 @@ class App extends Component {
             objectURL: "",
             text: "",
             name: "Stranger",
-            names: ["Annalena", "Mary", "Sepp", "Thanh", "Stranger"]
+            names: ["Annalena", "Mary", "Sepp", "Thanh", "Stranger"],
+            scrollY: window.scrollY
         }
     }
 
     componentDidMount() {
         document.getElementById("form__textarea").focus();
+        window.addEventListener('scroll', (event) => {
+            this.setState({scrollY: window.scrollY});
+            console.log(this.state.scrollY);
+            console.log(1.0 / ((Math.pow(window.scrollY, 2) * 40)));
+         });
         this.animateName();
     }
 
@@ -80,13 +86,17 @@ class App extends Component {
         }
     };
 
+    scrollOpacity = () => {
+
+    };
+
     render() {
 
         return (
-            <div className="app">
+            <div id={"app"}>
                 <h1>Hello <br/>{this.state.name}</h1>
                 <section>
-                    <div className={"page__shape"}>
+                    <div className={"page__shape page__shape--text"}>
                         <Textarea
                             className="form__textarea"
                             id="form__textarea"
@@ -99,13 +109,13 @@ class App extends Component {
                             <p>2020-04-20 16:20:23</p>
                         </div>
                     </div>
-                    <div className={"footer__indicator"}>
+                    <div className={"footer__indicator"} style={{opacity: 1.0 / Math.pow(this.state.scrollY, 2) * 200}}>
                         <p>Photo Upload</p>
                         <i className="page__arrow page__arrow--down"/>
                     </div>
                 </section>
                 <section>
-                    <div className={"page__shape"}>
+                    <div className={"page__shape page__shape--photo"}>
                         {this.state.objectURL ? <img alt={"photo"} className={"page__photo"} src={this.state.objectURL}/> : null}
                         <form method="POST" action="" encType='multipart/form-data'>
                             <i className="page__arrow page__arrow--right"/>
