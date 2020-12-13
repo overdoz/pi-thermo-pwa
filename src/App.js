@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import './App.css'
 import axios from 'axios';
 import Textarea from 'react-expanding-textarea'
+import CanvasDraw from "react-canvas-draw";
+
 
 class App extends Component {
     constructor(props) {
@@ -92,6 +94,7 @@ class App extends Component {
 
     render() {
 
+
         return (
             <div id={"app"}>
                 <h1>Hello <br/>{this.state.name}</h1>
@@ -116,7 +119,7 @@ class App extends Component {
                 </section>
                 <section>
                     <div className={"page__shape page__shape--photo"}>
-                        {this.state.objectURL ? <img alt={"photo"} className={"page__photo"} src={this.state.objectURL}/> : null}
+                        {this.state.objectURL ? <img alt={"preview"} className={"page__photo"} src={this.state.objectURL}/> : null}
                         <form method="POST" action="" encType='multipart/form-data'>
                             <i className="page__arrow page__arrow--right"/>
                             <label htmlFor="form__upload">{this.state.objectURL ? "Change" : "Choose"} photo...</label>
@@ -125,6 +128,9 @@ class App extends Component {
                             <i className="page__arrow page__arrow--left"/>
                         </form>
                     </div>
+                </section>
+                <section>
+                    <CanvasDraw />
                 </section>
                 <input className={"footer__button"} type="submit" value="print" onClick={this.onClickHandler}/>
             </div>
