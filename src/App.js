@@ -3,6 +3,7 @@ import './App.css'
 import axios from 'axios';
 import Textarea from 'react-expanding-textarea'
 import CanvasDraw from "react-canvas-draw";
+import TextSheet from "./textpage/TextSheet";
 
 
 class App extends Component {
@@ -116,19 +117,7 @@ class App extends Component {
             <div id={"app"}>
                 <h1>Hello <br/>{this.state.name}</h1>
                 <section>
-                    <div className={"page__shape page__shape--text"}>
-                        <Textarea
-                            className="form__textarea"
-                            id="form__textarea"
-                            maxLength="3000"
-                            name="pet[notes]"
-                            onChange={(e) => this.setState({text: e.target.value})}
-                            placeholder="Leave us a note..."
-                            />
-                        <div className={"page__date"}>
-                            <p>2020-04-20 16:20:23</p>
-                        </div>
-                    </div>
+                    <TextSheet/>
                     <div className={"footer__indicator"} style={{opacity: 1.0 / Math.pow(this.state.scrollY, 2) * 200}}>
                         <p>Photo Upload</p>
                         <i className="page__arrow page__arrow--down"/>
