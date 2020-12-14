@@ -8,13 +8,15 @@ import CanvasDraw from "react-canvas-draw";
 class App extends Component {
     constructor(props) {
         super(props);
+        this.loadableCanvas = React.createRef();
         this.state = {
             selectedFile: null,
             objectURL: "",
             text: "",
             name: "Stranger",
             names: ["Annalena", "Mary", "Sepp", "Thanh", "Stranger"],
-            scrollY: window.scrollY
+            scrollY: window.scrollY,
+            canvas: null
         }
     }
 
@@ -45,6 +47,12 @@ class App extends Component {
     };
 
     onClickHandler = () => {
+        console.log(this.loadableCanvas.canvasContainer.children[0]);
+       var image = this.loadableCanvas.canvasContainer.children[0].toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+
+
+        window.location.href=image;
+       console.log(image);
         if (this.state.text !== "" && this.state.selectedFile === null) {
             console.log("sent text");
             axios({
@@ -130,7 +138,13 @@ class App extends Component {
                     </div>
                 </section>
                 <section>
-                    <CanvasDraw />
+                    <CanvasDraw
+                        id={"canvas"}
+                        lazyRadius={0}
+                        hideGrid
+                        ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
+                        saveData={localStorage.getItem("savedDrawing")}
+                    />
                 </section>
                 <input className={"footer__button"} type="submit" value="print" onClick={this.onClickHandler}/>
             </div>
