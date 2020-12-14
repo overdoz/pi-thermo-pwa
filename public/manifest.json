@@ -1,6 +1,6 @@
 {
-  "short_name": "Skyprinter",
-  "name": "The NeverEnding Story",
+  "short_name": "Pi Print",
+  "name": "Pi Print",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff"
+  "theme_color": "#F2BDC7",
+  "background_color": "#F2BDC7"
 }

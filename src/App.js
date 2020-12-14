@@ -47,12 +47,21 @@ class App extends Component {
     };
 
     onClickHandler = () => {
-        console.log(this.loadableCanvas.canvasContainer.children[0]);
-       var image = this.loadableCanvas.canvasContainer.children[0].toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+        let image = this.loadableCanvas.canvasContainer.children[0].toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
 
 
-        window.location.href=image;
-       console.log(image);
+        // const canvas = document.getElementById('my-canvas');
+        // canvas.toBlob(function(blob) {
+        //     const formData = new FormData();
+        //     formData.append('my-file', blob, 'filename.png');
+        //
+        //     // Post via axios or other transport method
+        //     axios.post('/api/upload', formData);
+        // });
+
+        console.log(this.state.selectedFile);
+        console.log(image);
+
         if (this.state.text !== "" && this.state.selectedFile === null) {
             console.log("sent text");
             axios({
