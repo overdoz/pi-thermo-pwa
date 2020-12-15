@@ -36,7 +36,7 @@ class App extends Component {
         //     console.log(this.state.scrollY);
         //     console.log(1.0 / ((Math.pow(window.scrollY, 2) * 40)));
         //  });
-        // this.animateName();
+        this.animateName();
     }
 
     animateName = () => {
@@ -156,27 +156,7 @@ class App extends Component {
                         </nav>
                     </div>
                 </section>
-                <section>
-                    <div className={"page__shape page__shape--photo"}>
-                        {this.state.objectURL ? <img alt={"preview"} className={"page__photo"} src={this.state.objectURL}/> : null}
-                        <form method="POST" action="" encType='multipart/form-data'>
-                            <i className="page__arrow page__arrow--right"/>
-                            <label htmlFor="form__upload">{this.state.objectURL ? "Change" : "Choose"} photo...</label>
-                            <input className={"form___upload"} uwfileinput type="file" accept={".jpeg,.jpg,.png,.gif"} id="form__upload"
-                                   capture={"camera"} name={"file"} onChange={this.onChangeHandler}/>
-                            <i className="page__arrow page__arrow--left"/>
-                        </form>
-                    </div>
-                </section>
-                <section>
-                    <CanvasDraw
-                        id={"canvas"}
-                        lazyRadius={0}
-                        hideGrid
-                        ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
-                        saveData={localStorage.getItem("savedDrawing")}
-                    />
-                </section>
+           
                 <input className={"footer__button"} type="submit" value="print" onClick={this.onClickHandler}/>
             </div>
             </Router>
