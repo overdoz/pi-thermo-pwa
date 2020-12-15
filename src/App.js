@@ -4,6 +4,14 @@ import axios from 'axios';
 import Textarea from 'react-expanding-textarea'
 import CanvasDraw from "react-canvas-draw";
 import TextSheet from "./textpage/TextSheet";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+import Photosheet from "./photopage/PhotoSheet";
+import CanvasSheet from "./canvaspage/CanvasSheet";
 
 
 class App extends Component {
@@ -22,13 +30,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-        document.getElementById("form__textarea").focus();
-        window.addEventListener('scroll', (event) => {
-            this.setState({scrollY: window.scrollY});
-            console.log(this.state.scrollY);
-            console.log(1.0 / ((Math.pow(window.scrollY, 2) * 40)));
-         });
-        this.animateName();
+        // document.getElementById("form__textarea").focus();
+        // window.addEventListener('scroll', (event) => {
+        //     this.setState({scrollY: window.scrollY});
+        //     console.log(this.state.scrollY);
+        //     console.log(1.0 / ((Math.pow(window.scrollY, 2) * 40)));
+        //  });
+        // this.animateName();
     }
 
     animateName = () => {
@@ -114,13 +122,38 @@ class App extends Component {
 
 
         return (
+            <Router>
             <div id={"app"}>
                 <h1>Hello <br/>{this.state.name}</h1>
                 <section>
-                    <TextSheet/>
+
+                    <Switch>
+                        <Route path="/draw">
+                            <CanvasSheet/>
+                        </Route>
+                        <Route path="/photo">
+                            <Photosheet/>
+                        </Route>
+                        <Route path="/">
+                            <TextSheet/>
+                        </Route>
+                    </Switch>
                     <div className={"footer__indicator"} style={{opacity: 1.0 / Math.pow(this.state.scrollY, 2) * 200}}>
-                        <p>Photo Upload</p>
-                        <i className="page__arrow page__arrow--down"/>
+                        {/*<p>Photo Upload</p>*/}
+                        {/*<i className="page__arrow page__arrow--down"/>*/}
+                        <nav>
+                            <ul>
+                                <li>
+                                    <Link to="/">Text</Link>
+                                </li>
+                                <li>
+                                    <Link to="/draw">Drawing</Link>
+                                </li>
+                                <li>
+                                    <Link to="/photo">Photo</Link>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </section>
                 <section>
@@ -146,6 +179,7 @@ class App extends Component {
                 </section>
                 <input className={"footer__button"} type="submit" value="print" onClick={this.onClickHandler}/>
             </div>
+            </Router>
         )
     }
 }
