@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { changePhoto, selectPhoto } from "./photoSlice";
 
 
-export default function Photosheet() {
-    // Declare a new state variable, which we'll call "count"
-    const [objectURL, setURL] = useState("");
+export default function PhotoSheet() {
+
+    const dispatch = useDispatch()
+    const photoPath = useSelector(selectPhoto)
 
     return (
         <div className={"page__shape page__shape--photo"}>
-            {objectURL ? <img alt={"preview"} className={"page__photo"} src={objectURL}/> : null}
+            {photoPath ? <img alt={"preview"} className={"page__photo"} src={photoPath}/> : null}
             <form method="POST" action="" encType='multipart/form-data'>
                 <i className="page__arrow page__arrow--right"/>
-                <label htmlFor="form__upload">{objectURL ? "Change" : "Choose"} photo...</label>
+                <label htmlFor="form__upload">{photoPath ? "Change" : "Choose"} photo...</label>
                 <input className={"form___upload"} uwfileinput type="file" accept={".jpeg,.jpg,.png,.gif"} id="form__upload"
-                       capture={"camera"} name={"file"} onChange={e => setURL(getURL(e))}/>
+                       capture={"camera"} name={"file"} onChange={e => dispatch(changePhoto(getURL(e)))}/>
                 <i className="page__arrow page__arrow--left"/>
             </form>
         </div>
     );
 }
+
+// e => setURL(getURL(e))
 
 function getURL(event) {
     return URL.createObjectURL(event.target.files[0])
