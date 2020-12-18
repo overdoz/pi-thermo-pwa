@@ -6,12 +6,12 @@ export const textSlice = createSlice({
         value: ""
     },
     reducers: {
-        changeText: state => {
+        changeText: (state, action) => {
             // Redux Toolkit allows us to write "mutating" logic in reducers. It
             // doesn't actually mutate the state because it uses the immer library,
             // which detects changes to a "draft state" and produces a brand new
             // immutable state based off those changes
-            state.value += 1
+            state.value = action.payload
         },
         deleteText: state => {
             state.value = ""
@@ -30,8 +30,10 @@ export const changeText = text => {
     }
 }
 
-export const deleteText = text => {
+export const deleteText = () => {
     return {
         type: 'text/deleteText',
     }
 }
+
+export const seletTextValue = state => state.text
