@@ -19,7 +19,7 @@ export const textSlice = createSlice({
     }
 })
 
-export const { changeText, deleteText } = textSlice.actions
+// export const { changeText, deleteText } = textSlice.actions
 
 export default textSlice.reducer
 
