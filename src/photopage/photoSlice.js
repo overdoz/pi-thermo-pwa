@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 export const photoSlice = createSlice({
     name: 'photo',
     initialState: {
-        value: null
+        value: null,
+        url: ""
     },
     reducers: {
         changePhoto: (state, action) => {
@@ -12,9 +13,11 @@ export const photoSlice = createSlice({
             // which detects changes to a "draft state" and produces a brand new
             // immutable state based off those changes
             state.value = action.payload
+            state.url = getURL(action.payload)
         },
         deletePhoto: state => {
-            state.value = ""
+            state.value = null;
+            state.url = "";
         }
     }
 })
@@ -34,4 +37,9 @@ export const deletePhoto = () => {
     }
 }
 
-export const selectPhoto = state => state.photo.value
+export const selectPhotoPath = state => state.photo.url
+export const selectPhotoFile = state => state.photo.value
+
+function getURL(event) {
+    return URL.createObjectURL(event.target.files[0])
+}

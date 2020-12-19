@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { changePhoto, selectPhoto } from "./photoSlice";
+import { changePhoto, selectPhotoPath } from "./photoSlice";
 
 
 export default function PhotoSheet() {
 
     const dispatch = useDispatch()
-    const photoPath = useSelector(selectPhoto)
+    const photoPath = useSelector(selectPhotoPath)
 
     return (
         <div className={"page__shape page__shape--photo"}>
@@ -15,15 +15,11 @@ export default function PhotoSheet() {
                 <i className="page__arrow page__arrow--right"/>
                 <label htmlFor="form__upload">{photoPath ? "Change" : "Choose"} photo...</label>
                 <input className={"form___upload"} uwfileinput type="file" accept={".jpeg,.jpg,.png,.gif"} id="form__upload"
-                       capture={"camera"} name={"file"} onChange={e => dispatch(changePhoto(getURL(e)))}/>
+                       capture={"camera"} name={"file"} onChange={e => dispatch(changePhoto(e))}/>
                 <i className="page__arrow page__arrow--left"/>
             </form>
         </div>
     );
 }
 
-// e => setURL(getURL(e))
 
-function getURL(event) {
-    return URL.createObjectURL(event.target.files[0])
-}

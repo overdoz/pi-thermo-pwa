@@ -36,4 +36,4 @@ export const deleteText = () => {
     }
 }
 
-export const seletTextValue = state => state.text
+export const seletTextValue = state => state.text.value

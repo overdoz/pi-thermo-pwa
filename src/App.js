@@ -10,8 +10,8 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Photosheet from "./photopage/PhotoSheet";
-import CanvasSheet from "./canvaspage/CanvasSheet";
+import PhotoSheet from "./photopage/PhotoSheet";
+import PrintButton from "./components/PrintButton";
 
 
 class App extends Component {
@@ -30,12 +30,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-        // document.getElementById("form__textarea").focus();
-        // window.addEventListener('scroll', (event) => {
-        //     this.setState({scrollY: window.scrollY});
-        //     console.log(this.state.scrollY);
-        //     console.log(1.0 / ((Math.pow(window.scrollY, 2) * 40)));
-        //  });
         this.animateName();
     }
 
@@ -48,25 +42,10 @@ class App extends Component {
     };
 
 
-    onChangeHandler = event => {
-        this.setState({
-            selectedFile: event.target.files[0],
-            objectURL: URL.createObjectURL(event.target.files[0])
-        });
-    };
 
     onClickHandler = () => {
         let image = this.loadableCanvas.canvasContainer.children[0].toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
 
-
-        // const canvas = document.getElementById('my-canvas');
-        // canvas.toBlob(function(blob) {
-        //     const formData = new FormData();
-        //     formData.append('my-file', blob, 'filename.png');
-        //
-        //     // Post via axios or other transport method
-        //     axios.post('/api/upload', formData);
-        // });
 
         console.log(this.state.selectedFile);
         console.log(image);
@@ -114,9 +93,6 @@ class App extends Component {
         }
     };
 
-    scrollOpacity = () => {
-
-    };
 
     render() {
 
@@ -128,26 +104,21 @@ class App extends Component {
                 <section>
 
                     <Switch>
-                        <Route path="/draw">
-                            <CanvasSheet/>
-                        </Route>
-                        <Route path="/photo">
-                            <Photosheet/>
-                        </Route>
                         <Route path="/">
                             <TextSheet/>
+
+                        </Route>
+                        <Route path="/photo">
+                            <PhotoSheet/>
+
                         </Route>
                     </Switch>
                     <div className={"footer__indicator"} style={{opacity: 1.0 / Math.pow(this.state.scrollY, 2) * 200}}>
-                        {/*<p>Photo Upload</p>*/}
-                        {/*<i className="page__arrow page__arrow--down"/>*/}
+
                         <nav>
                             <ul>
                                 <li>
                                     <Link to="/">Text</Link>
-                                </li>
-                                <li>
-                                    <Link to="/draw">Drawing</Link>
                                 </li>
                                 <li>
                                     <Link to="/photo">Photo</Link>
@@ -156,8 +127,8 @@ class App extends Component {
                         </nav>
                     </div>
                 </section>
-           
-                <input className={"footer__button"} type="submit" value="print" onClick={this.onClickHandler}/>
+
+                <PrintButton/>
             </div>
             </Router>
         )
