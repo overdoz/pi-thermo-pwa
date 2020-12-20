@@ -4,9 +4,13 @@ import { deleteText, changeText }  from './textSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function TextSheet() {
-    // Declare a new state variable, which we'll call "count"
-    // const [text, setText] = useState("");
-    const dispatch = useDispatch()
+
+    const dispatch = useDispatch();
+    const domID = "clock";
+
+    setInterval(() => {
+        document.getElementById(domID).innerText = getFormattedDate();
+    }, 1000)
 
     return (
         <div className={"page__shape page__shape--text"}>
@@ -19,9 +23,20 @@ export default function TextSheet() {
                 placeholder="Leave us a note..."
             />
             <div className={"page__date"}>
-                <p>2020-04-20 16:20:23</p>
+                <p id={domID}>{getFormattedDate()}</p>
             </div>
         </div>
     );
+}
+
+const getFormattedDate = () => {
+    let date = new Date;
+    let year = date.getFullYear();
+    let month = ('0' + (date.getMonth()+1)).slice(-2);
+    let day = ('0' + date.getDate()).slice(-2);
+    let hour = ('0' + date.getHours()).slice(-2);
+    let min = ('0' + date.getMinutes()).slice(-2);
+    let sec = ('0' + date.getSeconds()).slice(-2);
+    return `${year}-${month}-${day} ${hour}:${min}:${sec}`;
 }
 
