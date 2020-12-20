@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Textarea from "react-expanding-textarea";
 import { deleteText, changeText }  from './textSlice'
 import { useSelector, useDispatch } from 'react-redux'
@@ -8,9 +8,17 @@ export default function TextSheet() {
     const dispatch = useDispatch();
     const domID = "clock";
 
-    setInterval(() => {
-        document.getElementById(domID).innerText = getFormattedDate();
-    }, 1000)
+    useEffect(() => {
+        let tick = setInterval(() => {
+            document.getElementById(domID).innerText = getFormattedDate();
+        }, 1000)
+
+        return function cleanUp() {
+            clearInterval(tick);
+        }
+    }, [])
+
+
 
     return (
         <div className={"page__shape page__shape--text"}>
