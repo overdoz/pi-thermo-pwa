@@ -85,6 +85,10 @@ label {
   color: #3258A6;
 }
 
+path {
+  fill: #3258A6;
+}
+
 li {
   list-style-type: none;
 }

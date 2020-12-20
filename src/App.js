@@ -9,7 +9,7 @@ import {
 import PhotoSheet from "./photopage/PhotoSheet";
 import PrintButton from "./components/PrintButton";
 import fontIcon from  './assets/font.svg';
-import photoIcon from  './assets/gallery.svg';
+import photoIcon from  './assets/picture.svg';
 
 
 class App extends Component {

@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import Textarea from "react-expanding-textarea";
-import { deleteText, changeText }  from './textSlice'
-import { useSelector, useDispatch } from 'react-redux'
+import { changeText, seletTextValue }  from './textSlice'
+import {useDispatch, useSelector} from 'react-redux'
+import {selectPhotoPath} from "../photopage/photoSlice";
 
 export default function TextSheet() {
 
     const dispatch = useDispatch();
+    const text = useSelector(seletTextValue);
     const domID = "clock";
 
     useEffect(() => {
@@ -18,11 +20,10 @@ export default function TextSheet() {
         }
     }, [])
 
-
-
     return (
         <div className={"page__shape page__shape--text"}>
             <Textarea
+                defaultValue={text}
                 className="form__textarea"
                 id="form__textarea"
                 maxLength="3000"
