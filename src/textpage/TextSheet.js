@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Textarea from "react-expanding-textarea";
 import { changeText, seletTextValue }  from './textSlice'
 import {useDispatch, useSelector} from 'react-redux'
-import {selectPhotoPath} from "../photopage/photoSlice";
 
 export default function TextSheet() {
 
@@ -39,7 +38,7 @@ export default function TextSheet() {
 }
 
 const getFormattedDate = () => {
-    let date = new Date;
+    let date = new Date();
     let year = date.getFullYear();
     let month = ('0' + (date.getMonth()+1)).slice(-2);
     let day = ('0' + date.getDate()).slice(-2);

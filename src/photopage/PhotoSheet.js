@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { changePhoto, selectPhotoPath } from "./photoSlice";
 
 
-export default function PhotoSheet(props) {
-    const {onChange, path} = props
+export default function PhotoSheet() {
 
     const dispatch = useDispatch()
     const photoPath = useSelector(selectPhotoPath)

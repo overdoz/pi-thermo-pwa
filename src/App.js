@@ -15,15 +15,8 @@ import photoIcon from  './assets/picture.svg';
 class App extends Component {
     constructor(props) {
         super(props);
-        // this.loadableCanvas = React.createRef();
         this.state = {
-            selectedFile: null,
-            objectURL: "",
-            text: "",
             name: "Stranger",
-            names: ["Annalena", "Mary", "Sepp", "Thanh", "Stranger"],
-            // scrollY: window.scrollY,
-            canvas: null
         }
     }
 
@@ -33,11 +26,11 @@ class App extends Component {
 
     animateName = () => {
         let count = 0;
+        const names = ["Annalena", "Mary", "Sepp", "Thanh", "Stranger"];
         setInterval(() => {
-            count = (count + 1) % this.state.names.length;
+            count = (count + 1) % names.length;
             let name = document.getElementById("header__name");
-            name.innerText = this.state.names[count]
-            // this.setState({name: this.state.names[count]})
+            name.innerText = names[count]
         }, 2000)
     };
 
@@ -61,20 +54,20 @@ class App extends Component {
                             <TextSheet/>
                         </Route>
                         <Route path="/photo">
-                            <PhotoSheet path={this.state.objectURL} onchange={this.setStates}/>
+                            <PhotoSheet />
                         </Route>
                     </Switch>
                     <div className={"footer__indicator"}>
                         <nav>
                             <ul className={"footer__navigation"}>
                                 <li>
-                                    <Link to="/"><img src={fontIcon} /></Link>
+                                    <Link to="/"><img alt={"TextLink"} src={fontIcon} /></Link>
                                 </li>
                                 <li>
                                     <PrintButton/>
                                 </li>
                                 <li>
-                                    <Link to="/photo"><img src={photoIcon} /></Link>
+                                    <Link to="/photo"><img alt={"PhotoLink"} src={photoIcon} /></Link>
                                 </li>
                             </ul>
                         </nav>

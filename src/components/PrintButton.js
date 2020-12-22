@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import axios from "axios";
 import {selectPhotoFile} from "../photopage/photoSlice";
