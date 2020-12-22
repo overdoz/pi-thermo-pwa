@@ -15,6 +15,8 @@ export default function PrintButton() {
 
         if (location === "/") {
             console.log("sent text");
+            console.log(text)
+
             axios({
                 method: 'post',
                 url: '/',
@@ -28,13 +30,12 @@ export default function PrintButton() {
                     type: 'text'
                 },
             }).then(res => { // then print response status
+                console.log("send Text")
                 console.log(res.statusText)
             });
-        }
-
-        if (location === "/photo") {
+        }else if (location === "/photo") {
             const data = new FormData();
-
+            console.log(photo)
             data.append('file', photo);
             axios.post("/", data, {
                 headers: {
@@ -44,10 +45,12 @@ export default function PrintButton() {
                     type: 'files'
                 }
             }).then(res => { // then print response status
+                console.log("send Photo")
+
                 console.log(res.statusText)
             });
         } else {
-            console.log("Couldn't send shit...")
+            console.log("Couldn't send photo...")
         }
     }
 
@@ -55,77 +58,3 @@ export default function PrintButton() {
         <input className={"footer__button"} type="submit" value="print" onClick={onClickHandler}/>
     );
 }
-
-// export class PrinterButton extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//
-//         };
-//         this.payload = null;
-//
-//     }
-//
-//     checkLocation = () => {
-//         const location = useLocation().pathname;
-//         if (location === "/") {
-//             this.payload = useSelector(seletTextValue);
-//         }
-//
-//         if (location === "/photo") {
-//             this.payload = useSelector(selectPhotoFile);
-//         }
-//     }
-//
-//     onClickHandler = () => {
-//         this.checkLocation();
-//
-//         if (this.location === "/") {
-//             console.log("sent text");
-//             axios({
-//                 method: 'post',
-//                 url: '/',
-//                 data: {
-//                     Text: this.payload
-//                 },
-//                 headers: {
-//                     'Content-Type': "application/json"
-//                 },
-//                 params: {
-//                     type: 'text'
-//                 },
-//             }).then(res => { // then print response status
-//                 console.log(res.statusText)
-//             });
-//         }
-//
-//         if (this.location === "/photo") {
-//             const data = new FormData();
-//
-//             data.append('file', this.payload);
-//             axios.post("/", data, {
-//                 headers: {
-//                     'Content-Type': "multipart/form-data"
-//                 },
-//                 params: {
-//                     type: 'files'
-//                 }
-//             }).then(res => { // then print response status
-//                 console.log(res.statusText)
-//             });
-//         } else {
-//             console.log("Couldn't send shit...")
-//         }
-//     }
-//
-//
-//     render() {
-//         return (
-//             <input className={"footer__button"} type="submit" value="print" onClick={this.onClickHandler}/>
-//         );
-//     }
-//
-// }
-
-
-

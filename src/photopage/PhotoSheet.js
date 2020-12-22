@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changePhoto, selectPhotoPath } from "./photoSlice";
 
 
-export default function PhotoSheet() {
+export default function PhotoSheet(props) {
+    const {onChange, path} = props
 
     const dispatch = useDispatch()
     const photoPath = useSelector(selectPhotoPath)
+
 
     return (
         <div className={"page__shape page__shape--photo"}>

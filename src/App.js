@@ -41,57 +41,13 @@ class App extends Component {
         }, 2000)
     };
 
+    setStates = (e) => {
+        this.setState({selectedFile: e});
+        this.setState({objectURL: URL.createObjectURL(e.target.files[0])});
+        console.log(this.state.objectURL)
+    }
 
 
-    // onClickHandler = () => {
-    //     let image = this.loadableCanvas.canvasContainer.children[0].toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
-    //
-    //
-    //     console.log(this.state.selectedFile);
-    //     console.log(image);
-    //
-    //     if (this.state.text !== "" && this.state.selectedFile === null) {
-    //         console.log("sent text");
-    //         axios({
-    //             method: 'post',
-    //             url: '/',
-    //             data: {
-    //                 Text: this.state.text
-    //             },
-    //             headers: {
-    //                 'Content-Type': "application/json"
-    //             },
-    //             params: {
-    //                 type: 'text'
-    //             },
-    //
-    //         }).then(res => { // then print response status
-    //             console.log(res.statusText)
-    //         });
-    //         console.log((this.state.text));
-    //         this.setState({text: ""});
-    //     } else if (this.state.text === "" && this.state.selectedFile !== null) {
-    //         console.log("sent pic");
-    //         const data = new FormData();
-    //
-    //         data.append('file', this.state.selectedFile);
-    //         axios.post("/", data, {
-    //             headers: {
-    //                 'Content-Type': "multipart/form-data"
-    //             },
-    //             params: {
-    //                 type: 'files'
-    //             }
-    //         }).then(res => { // then print response status
-    //             console.log(res.statusText)
-    //         });
-    //         this.setState({selectedFile: null});
-    //     } else {
-    //         this.setState({text: ""});
-    //         this.setState({selectedFile: null});
-    //         console.log("Couldn't send shit...")
-    //     }
-    // };
 
 
     render() {
@@ -105,10 +61,10 @@ class App extends Component {
                             <TextSheet/>
                         </Route>
                         <Route path="/photo">
-                            <PhotoSheet/>
+                            <PhotoSheet path={this.state.objectURL} onchange={this.setStates}/>
                         </Route>
                     </Switch>
-                    <div className={"footer__indicator"} style={{opacity: 1.0 / Math.pow(this.state.scrollY, 2) * 200}}>
+                    <div className={"footer__indicator"}>
                         <nav>
                             <ul className={"footer__navigation"}>
                                 <li>

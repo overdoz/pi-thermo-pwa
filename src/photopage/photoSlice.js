@@ -12,7 +12,7 @@ export const photoSlice = createSlice({
             // doesn't actually mutate the state because it uses the immer library,
             // which detects changes to a "draft state" and produces a brand new
             // immutable state based off those changes
-            state.value = action.payload
+            state.value = action.payload.target.files[0]
             state.url = getURL(action.payload)
         },
         deletePhoto: state => {
