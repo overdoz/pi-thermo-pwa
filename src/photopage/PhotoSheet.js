@@ -15,7 +15,7 @@ export default function PhotoSheet() {
             <form method="POST" action="" encType='multipart/form-data'>
                 <i className="page__arrow page__arrow--right"/>
                 <label htmlFor="form__upload">{photoPath ? "Change" : "Choose"} photo...</label>
-                <input className={"form___upload"} uwfileinput type="file" accept={".jpeg,.jpg,.png,.gif"} id="form__upload"
+                <input className={"form___upload"} type="file" accept={".jpeg,.jpg,.png,.gif"} id="form__upload"
                        capture={"camera"} name={"file"} onChange={e => dispatch(changePhoto(e))}/>
                 <i className="page__arrow page__arrow--left"/>
             </form>
