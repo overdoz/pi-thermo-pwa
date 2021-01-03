@@ -33,7 +33,11 @@ class App extends Component {
         setInterval(() => {
             count = (count + 1) % names.length;
             let name = document.getElementById("header__name");
-            name.innerText = names[count]
+            try {
+                name.innerText = names[count]
+            } catch (e) {
+                console.log(e)
+            }
         }, 2000)
     };
 

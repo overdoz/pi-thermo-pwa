@@ -1,3 +1,5 @@
+
+
 form,
 textarea,
 nav {
@@ -83,6 +85,21 @@ label {
   text-align: left;
   line-height: 90%;
   color: #3258A6;
+  z-index: 3;
+  bottom: 0;
+}
+
+.photo_input {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 20vw;
+  z-index: 2;
+  top: 0;
+  background-color: rgba(255,255,255,1);
+  width: 100%;
 }
 
 path {
@@ -124,11 +141,34 @@ form {
   background-color: #F2BDC7;
 }
 
+.close-button {
+  position: absolute;
+  z-index: 10;
+  right: -3vw;
+  top: -3vw;
+  background-color: #F2E205;
+  color: #3258A6;
+  border: 2px solid #3258a6;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vw;
+  width: 8vw;
+  box-shadow: 1px 1px 1px black;
+
+}
+
+.close-button-icon {
+  height: 4vw;
+  width: 4vw;
+}
+
 
 #form__upload {
   opacity: 0;
   position: absolute;
-  z-index: -1;
+  z-index: 2;
 }
 
 .expand {
@@ -159,7 +199,6 @@ form {
 
 .page__shape {
   padding: 5vw 2vw 2vw 2vw;
-  scroll-snap-align: start;
   display: flex;
   display: -webkit-flex;
   justify-content: center;
@@ -169,6 +208,7 @@ form {
   background-color: white;
   border-top: 1px dashed #F2BDC7;
   border-bottom: 1px dashed #F2BDC7;
+  overflow-y: scroll;
 }
 
 .page__shape--text {
@@ -250,6 +290,7 @@ form {
 
 .form__upload {
   padding: 2em;
+  overflow-y: scroll;
 }
 
 .footer__navigation {
@@ -263,7 +304,7 @@ form {
 }
 
 .footer__button {
-  /*position: fixed;*/
+  position: relative;
   text-align: center;
   font-weight: bold;
   /*right: 3vh;*/
