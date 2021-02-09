@@ -29,7 +29,7 @@ class App extends Component {
 
     animateName = () => {
         let count = 0;
-        const names = ["Annalena", "Mary", "Sepp", "Thanh", "Stranger"];
+        const names = ["Annalena", "Thanh", "Anna", "Sepp", "Stranger"];
         setInterval(() => {
             count = (count + 1) % names.length;
             let name = document.getElementById("header__name");
@@ -51,7 +51,7 @@ class App extends Component {
     render() {
         return (
             <div id={"app"}>
-                <h1>Hello <br/><span id={"header__name"}>{this.state.name}</span></h1>
+                <h1>Bonjour &#129360; <br/><span id={"header__name"}>{this.state.name}</span></h1>
 
                 <section>
                    {/*<AnimatedSwitch/>*/}

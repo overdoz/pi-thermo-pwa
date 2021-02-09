@@ -52,6 +52,13 @@ p {
   font-size: 5.2vw;
 }
 
+@media (min-width: 700px) {
+  p {
+
+    font-size: 21px;
+  }
+}
+
 textarea {
   overflow: hidden;
   resize: vertical;
@@ -62,6 +69,12 @@ textarea {
   line-height: 5.4vw;
   overflow-y: scroll;
   margin-top: 5vw;
+}
+
+@media (min-width: 700px) {
+  textarea {
+    margin-top: 0;
+  }
 }
 
 textarea:focus, input:focus{
@@ -211,12 +224,29 @@ form {
   overflow-y: scroll;
 }
 
+@media (min-width: 700px) {
+  .page__shape {
+    padding: 50px 18px 20px 18px;
+  }
+}
+
 .page__shape--text {
   width: 90%;
 }
 
 .page__shape--photo {
   width: 80%;
+  min-height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+@media (min-width: 700px) {
+  .page__shape--text {
+    width: 354px;
+  }
 }
 
 .page__date {
@@ -288,6 +318,13 @@ form {
   font-size: 5.2vw;
 }
 
+@media (min-width: 700px) {
+  .form__textarea {
+    font-size: 21px;
+    line-height: 32px;
+  }
+}
+
 .form__upload {
   padding: 2em;
   overflow-y: scroll;
@@ -319,6 +356,14 @@ form {
   background-color: #F2E205;
   color: #3258A6;
   box-shadow: 2px 2px 2px black;
+}
+
+@media (min-width: 700px) {
+  .footer__button {
+    height: 100px;
+    width: 100px;
+    font-size: 28px;
+  }
 }
 
 .footer__button:active {
