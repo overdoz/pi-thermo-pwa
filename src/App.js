@@ -23,13 +23,22 @@ class App extends Component {
         }
     }
 
+    shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1)); // Zufälligen Index von 0 bis i wählen
+            [array[i], array[j]] = [array[j], array[i]]; // Elemente tauschen
+        }
+    }
+
+
     componentDidMount() {
         this.animateName();
     }
 
     animateName = () => {
         let count = 0;
-        const names = ["Annalena", "Thanh", "Anna", "Sepp", "Stranger"];
+        const names = ["Ola", "Thanh", "Mary", "Sammy", "Stranger"];
+        this.shuffle(names)
         setInterval(() => {
             count = (count + 1) % names.length;
             let name = document.getElementById("header__name");
@@ -51,7 +60,7 @@ class App extends Component {
     render() {
         return (
             <div id={"app"}>
-                <h1>Bonjour &#129360; <br/><span id={"header__name"}>{this.state.name}</span></h1>
+                <h1>Moin <span id={"header__name"}>{this.state.name}</span></h1>
 
                 <section>
                    {/*<AnimatedSwitch/>*/}

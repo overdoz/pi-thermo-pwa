@@ -10,7 +10,6 @@
     "react-canvas-draw": "^1.1.1",
     "react-dom": "^16.14.0",
     "react-expanding-textarea": "^2.3.0",
-    "react-paint": "^1.0.1",
     "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",

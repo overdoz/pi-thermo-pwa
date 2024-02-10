@@ -55,6 +55,6 @@ export default function PrintButton() {
     }
 
     return (
-        <input className={"footer__button"} type="submit" value="print" onClick={onClickHandler}/>
+        <input id={"print-button"} className={"footer__button"} type="submit" value="print" onClick={onClickHandler}/>
     );
 }
